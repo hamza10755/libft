@@ -5,58 +5,70 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hbelaih <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/03 12:38:23 by hbelaih           #+#    #+#             */
-/*   Updated: 2024/09/03 12:46:58 by hbelaih          ###   ########.fr       */
+/*   Created: 2024/09/03 15:21:17 by hbelaih           #+#    #+#             */
+/*   Updated: 2024/09/03 18:44:00 by hbelaih          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-static int	get_num_length(int n)
+int	getlen(int c)
 {
 	int	len;
 
-	if (n <= 0)
+	if (c <= 0)
 		len = 1;
 	else
 		len = 0;
-	while (n != 0)
+	while (c != 0)
 	{
-		n = n / 10;
+		c = c / 10;
 		len++;
 	}
 	return (len);
 }
 
-static void	fill_number(char *str, int n, int len)
+char	*fillnumber(int n, int c)
 {
-	str[len] = '\0';
+	char	*s;
+
+	s = malloc(c + 1);
+	if (s == NULL)
+		return (NULL);
+	s[c] = '\0';
 	if (n == 0)
 	{
-		str[0] = '0';
-		return ;
+		s[0] = '0';
+		return (s);
 	}
 	if (n < 0)
 	{
-		str[0] = '-';
+		s[0] = '-';
 		n = -n;
 	}
-	while (n != 0)
+	while (n > 0)
 	{
-		str[len] = (n % 10) + '0';
-		n /= 10;
-		len--;
+		s[--c] = (n % 10) + '0';
+		n = n / 10;
 	}
+	if (s[0] != '-' && c == 1)
+		s[0] = '0';
+	return (s);
 }
 
 char	*ft_itoa(int n)
 {
 	int		len;
-	char	*result;
+	char	*res;
 
-	len = get_num_length(n);
-	result = (char *)malloc(sizeof(char) * (len + 1));
-	if (!result)
+	if (n == -2147483648)
+	{
+		return (ft_strdup("-2147483648"));
+	}
+	len = getlen(n);
+	res = fillnumber(n, len);
+	if (!res)
+	{
 		return (NULL);
-	fill_number(result, n, len);
-	return (result);
+	}
+	return (res);
 }
