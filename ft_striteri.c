@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbelaih <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: hamzabillah <hamzabillah@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 19:29:41 by hbelaih           #+#    #+#             */
-/*   Updated: 2024/09/03 19:32:06 by hbelaih          ###   ########.fr       */
+/*   Updated: 2024/09/06 00:28:40 by hamzabillah      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include	"libft.h"
 
+#include	"libft.h"
 void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
 	if (!s || !f)
 	{
-		return (NULL);
+		return ;
 	}
 	unsigned int	i;
 

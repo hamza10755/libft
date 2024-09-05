@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbelaih <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: hamzabillah <hamzabillah@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 15:34:49 by hbelaih           #+#    #+#             */
-/*   Updated: 2024/08/29 15:51:00 by hbelaih          ###   ########.fr       */
+/*   Updated: 2024/09/06 00:44:24 by hamzabillah      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include	"libft.h"
 
 char	*ft_strrchr(const char *s, int c)
@@ -18,13 +19,13 @@ char	*ft_strrchr(const char *s, int c)
 	l = NULL;
 	while (*s)
 	{
-		if (*s == (char)c)
+		if (*s == (unsigned char)c)
 		{
 			l = (char *)s;
 		}
 		s++;
 	}
-	if ((char)c == '\0')
+	if ((unsigned char)c == '\0')
 	{
 		return ((char *)s);
 	}

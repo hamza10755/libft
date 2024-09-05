@@ -3,13 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbelaih <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: hamzabillah <hamzabillah@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 13:02:36 by hbelaih           #+#    #+#             */
-/*   Updated: 2024/09/01 13:36:41 by hbelaih          ###   ########.fr       */
+/*   Updated: 2024/09/06 00:53:05 by hamzabillah      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libft.h"
+
+#include	"libft.h"
 
 void	*ft_memmove(void *dst, const void *src, size_t n)
 {
@@ -17,19 +18,20 @@ void	*ft_memmove(void *dst, const void *src, size_t n)
 	unsigned char		*d;
 
 	if (!dst && !src)
-	{
 		return (dst);
-	}
+	s = (unsigned char *)src;
+	d = (unsigned char *)dst;
 	if (dst < src)
 	{
-		ft_memcpy(dst, src, n);
-		return (dst);
+		while (n--)
+			*d++ = *s++;
 	}
-	s = src;
-	d = dst;
-	while (n--)
+	else
 	{
-		d[n] = s[n];
+		s += n;
+		d += n;
+		while (n--)
+			*--d = *--s;
 	}
 	return (dst);
 }
